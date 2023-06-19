@@ -32,7 +32,6 @@ void main() {
    print("Institute  =  ${Students.institute}");
 
    Students st2 = Students();
-
    print("Student 2 Details");
    print("Name       =  ${st2.name  = "Appu"}");
    print("Age        =  ${st2.age   = 21}");
