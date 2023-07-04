@@ -1,68 +1,51 @@
+///List  2 types :
+///1. fixed length list
+///2. growable list
 void main() {
-  ///1. literal method of list creation
-  List l0 = []; // empty list
-  List l1 = [1, 2, 3, 4, 5, "hello", 1.2]; // group of dynamic values
-  List<int> l2 = [1, 3, 5, 7, 9, 11]; //group of integer values
-  /// to create specific type List
-  /// use List<datatype> listname = [];
-  /// DONOT USE 'var'
+// 1. dynamic/literal method for  list creation
+  List mylist = [1, 2, 3, 4, 5, 6, 7, "king"]; // this is a dynamic list
+  List<int> numbers = [10, 20, 21, 23]; // this list store only integer values
 
-  ///2. List.empty
-  List l3 = List.empty(growable: true);
-  l3.add(100);
-  l3.addAll([12, 33, 100]);
+//NOTE:  if u want to store specific type data then use  List<datatype> listname  DO NOT USE var
 
-  ///3. List.from
-  List l4 = List.from(l2);
-  l4.add(100);
-  l4.insert(3, 13);
-  l4.replaceRange(0, 4, [1, 2, 3, 4, 5]);
+//2. List.empty()
+  List l1 = List.empty(); // this will create an empty list eg:[]
+  //l1.add(10);             // (bcoz growable is false so cannot add values)
+  List l2 = List.empty(growable: true);
+  l2.add(10);
+  l2.addAll(numbers);
+  l2.insert(1, 50);
 
-  /// replace the values from 0 to 4-1 (0-3)
+//3 List.from
+  List l3 = List.from([1,3,5,7,9]);
+  l3.addAll(numbers);
+//4 List.of
+  List l4 = List.of([2,4,6,8,9]);
+  l4.addAll(l3);
 
-  /// 4. List.of
-  List l5 = List.of(l1);
+// 5 List.filled
+ List l5 = List.filled(10, 2);
+ l5[1] = 3;
+ l5[5] = 5;
+ //l5.add(10);  cannot add to a fixed length list since l5 has initial value of growable = false
 
-  ///5. List.unmodifiable
-  List l6 = List.unmodifiable([
-    10,
-    100,
-    1000,
-    10000,
-    100000
-  ]); // no modification allowed eg : replace value to add new value etc
-  //l6.add(11);
-  ///6 List.filled
-  List l7 = List.filled(10, 1, growable: true);
-  l7[1] = 2;
-  l7[3] = 4;
-  l7[5] = 6;
-  l7.replaceRange(0, 10, [4, 7, 9, 2, 4, 5, 6, 7, 9, 8]);
+  // 6 List.generate
+  List l6 = List.generate(5, (index)=> 8 * index+2);   // 8 * 0 + 2  8 * 1 + 2  8 * 2 + 2 etc
 
-  /// 7. List.generate
-  List l8 = List.generate(8, (index) {
-    return (index * 2 + 3);
-  });
+ // 7 List.unmodifiable
+  List  l7 = List.unmodifiable(l6);   // values from l6 added to l7
+ // l7[2] = 100;
+  //l7.add(1000);
 
-  List l9 = List.generate(15, (index) => 2); // index 0 to 14 fill with 2
+  print('literal list   - $mylist');
+  print('literal list2  - $numbers');
+  print('l1             - $l1');
+  print('l2             - $l2');
+  print('l3             - $l3');
+  print('l4             - $l4');
+  print('l5             - $l5');
+  print('l6             - $l6');
+  print('l7             - $l7');
 
-  print('l0    = $l0');
-  print('l1    = $l1');
-  print('l2    = $l2');
-  print('l3    = $l3');
-  print('l4    = $l4');
-  print('l5    = $l5');
-  print('l6    = $l6');
-  print('l7    = $l7');
-  print('l8    = $l8');
-
-
-  // print(add());
-  // print(add1());
 
 }
-// int add(){
-//   int sum =50+50;
-//   return sum;
-// }
-// int add1()=> 50+50;
